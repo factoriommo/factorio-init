@@ -1,0 +1,18 @@
+#!/bin/sh -e
+# postinst for factorio-init
+
+set -e
+
+PKG=factorio-init
+
+if [ "$1" = configure ] ; then
+    # Enable all relevant services on boot
+    update-rc.d factorio defaults
+    update-rc.d factorio start
+else
+	invoke-rc.d factorio restart || true
+fi
+
+#DEBHELPER#
+
+exit 0

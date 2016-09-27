@@ -1,0 +1,13 @@
+#!/bin/sh
+# prerm for factorio-init
+
+PKG=factorio-init
+
+if [ "$1" = remove ] || [ "$1" = purge ] ; then
+	invoke-rc.d factorio stop || true
+    update-rc.d factorio disable
+fi
+
+#DEBHELPER#
+
+exit 0

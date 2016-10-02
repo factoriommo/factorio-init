@@ -1,2 +1,1 @@
-/opt/factorio/factorio-init/factorio /usr/bin/factorio
-/opt/factorio/factorio-init/factorio /etc/init.d/factorio
+/etc/init.d/factorio /usr/bin/factorio

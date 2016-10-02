@@ -2,10 +2,11 @@ Buuld for debian
 ----------------
 
 ```
-run debuild.
+apt-get install devscripts dpkg-dev debhelpers debianutils
+run debuild in this dir.
 ```
 
-deb file will be in ..
+deb file will be in dir up (./..)
 
 
 Build for Arch

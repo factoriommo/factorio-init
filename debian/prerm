@@ -4,6 +4,7 @@
 PKG=factorio-init
 
 if [ "$1" = remove ] || [ "$1" = purge ] ; then
+    echo " => Note: uninstalling factorio-init will NOT remove any user data or the factorio user!"
 	invoke-rc.d factorio stop || true
     update-rc.d factorio disable
 fi

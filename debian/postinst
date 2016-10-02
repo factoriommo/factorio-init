@@ -4,22 +4,33 @@
 set -e
 
 PKG=factorio-init
-SERVER_VERSION="0.14.12"
+SERVER_VERSION="0.14.11"
 SERVER_DL_URL="https://www.factorio.com/get-download/$SERVER_VERSION/headless/linux64"
 
 if [ "$1" = configure ] ; then
-    # Set up the folders we need.
+    # Create factorio user if not exists
+    id -u factorio > /dev/null || adduser --system --home /opt/factorio --shell /bin/bash --group factorio
+
     if [ ! -f /var/log/factorio.log ]; then
         touch /var/log/factorio.log
-        chown factorio:factorio /var/log/factorio.log
-    fi
-    if [ ! -d /var/factorio ]; then
-        mkdir -p /var/factorio
-        chown factorio:factorio /var/factorio
     fi
 
+    # Set up the folders we need.
+    mkdir -p /opt/factorio/factorio/temp
+    mkdir -p /var/factorio/saves
+    mkdir -p /var/factorio/mods
+
+    # Various runtime permissions
+    chown factorio:factorio /var/log/factorio.log
+    chown factorio:factorio /opt/factorio/factorio
+    chown factorio:factorio /opt/factorio/factorio/temp
+    chown factorio:factorio /var/factorio
+    chown factorio:factorio /var/factorio/saves
+    chown factorio:factorio /var/factorio/mods
+    chown factorio:factorio /etc/factorio/config.ini
+
     if grep -q "$SERVER_VERSION" /opt/factorio/factorio/data/changelog.txt; then
-        echo " => The latest factorio server is already installed: v$SERVER_VERSION"
+        echo " => The requested factorio version or newer is already installed: v$SERVER_VERSION"
     else
         # First: if server is running we need to stop it.
         echo " => A update has been found and will be downloaded now."

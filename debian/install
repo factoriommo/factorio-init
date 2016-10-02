@@ -1,5 +1,5 @@
-factorio /opt/factorio/factorio-init/factorio
-bash_autocomplete /opt/factorio/factorio-init/bash_autocomplete
-config /etc/factorio/factorio-init-config
-config.ini /etc/factorio/config.ini
-server-settings.json /etc/factorio/server-settings.json
+factorio /etc/init.d/
+bash_autocomplete /opt/factorio/factorio-init/
+factorio-init-config /etc/factorio/
+config.ini /etc/factorio/
+server-settings.json /etc/factorio/

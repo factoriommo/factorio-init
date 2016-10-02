@@ -6,5 +6,5 @@ Standards-Version: 3.9.2
 
 Package: factorio-init
 Architecture: amd64
-Pre-Depends: bash tar curl bash-completion grep
+Pre-Depends: bash,tar,curl,bash-completion,grep
 Description: Factorio initscript and server updater

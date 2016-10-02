@@ -1,4 +1,6 @@
-config
-factorio.service
-factorio-env.service
-systemd.env
+*.swp
+*.deb
+*.changes
+*.dsc
+*.tar.gz
+*.build

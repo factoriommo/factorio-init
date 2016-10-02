@@ -1,1 +1,2 @@
-files/wow.py usr/sbin
+factorio.service.example etc/systemd/system/factorio.service
+factorio usr/bin

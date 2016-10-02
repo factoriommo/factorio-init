@@ -1,1 +1,4 @@
-docs/*
+README.md
+config.example
+factorio.service.example
+LICENSE

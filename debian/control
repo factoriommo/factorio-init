@@ -5,6 +5,6 @@ Maintainer: Maikel Wever <maikelwever@gmail.com>
 Standards-Version: 3.9.2
 
 Package: factorio-init
-Architecture: all
-Pre-Depends: bash
-Description: Factorio initscript
+Architecture: amd64
+Pre-Depends: bash tar curl bash-completion grep
+Description: Factorio initscript and server updater

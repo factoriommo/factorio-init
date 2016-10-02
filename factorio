@@ -16,15 +16,11 @@ debug(){
   fi
 }
 
-# Load config file
-if [ -L $0 ]; then
-  source `readlink -e $0 | sed "s:[^/]*$:config:"`
-else
-  source `echo $0 | sed "s:[^/]*$:config:"`
-fi
+source /etc/factorio/factorio-init-config
+
 
 if [ -z "${SERVICE_NAME}" ]; then
-  echo "Couldn't load config file, please edit config.example and rename it to config"
+  echo "Couldn't load config file, please create /etc/factorio/factorio-init-config"
   exit 1
 fi
 
@@ -104,7 +100,7 @@ if ! [ "$1" == "install" ]; then
   fi
 
   # Finally, set up the invocation
-  INVOCATION="${BINARY} --config ${FCONF} --port ${PORT} --start-server-load-latest --server-settings ${SERVER_SETTINGS} --autosave-interval ${AUTOSAVE_INTERVAL} --autosave-slots ${AUTOSAVE_SLOTS} ${RCON} ${EXTRA_BINARGS}"
+  INVOCATION="${BINARY} --config ${FCONF} --port ${PORT} --server-settings ${SERVER_SETTINGS} ${RCON} ${EXTRA_BINARGS}"
 
 fi
 

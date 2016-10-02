@@ -7,25 +7,28 @@ DEBUG=0
 # What do you want to call this service?
 SERVICE_NAME="Factorio"
 
+FCONF="/etc/factorio/config.ini"
+
 # Which user/group is running factorio?
 # Running any public service as "root" is generally not recommended
 USERNAME=factorio
 USERGROUP=factorio
 
 # The absolute path to the factorio directory
-FACTORIO_PATH=/opt/factorio
+FACTORIO_PATH=/opt/factorio/factorio
 # Server settings file, see data/server-settings.example.json
-SERVER_SETTINGS=${FACTORIO_PATH}/data/server-settings.json
+SERVER_SETTINGS=/etc/factorio/server-settings.json
+# Absolute path to factorio write dir.
+WRITE_DIR=/var/factorio/
+
+# Path for server log output
+CMDOUT=/var/log/factorio.log
+
 
 # Port on which you want to run the server
 PORT=34197
 
-# The number of minutes between each autosave
-AUTOSAVE_INTERVAL=10
-# The number of autosaves to use for rotation
-AUTOSAVE_SLOTS=3
-
-# Save the command/chat/log on server start? Default location /opt/factorio/server.out 
+# Save the command/chat/log on server start? Default location /var/log/factorio.log 
 # Setting this to 0 will cause the script to erase the log file on each start
 # If you set this to 1 you might want to apply logrotate on the log or it will eventually fill your disk
 SAVELOG=0
@@ -39,6 +42,7 @@ SAVELOG=0
 # with the official tarball you can safely ignore this option.
 PACKAGE_DIR_NAME=factorio
 
+# Ignore the autoupdater, this package updates itself via Apt and dpkg.
 #
 # narcotiq made a sweet update script for factorio and by cloning into this
 # you can simply run "factorio update" provided you configure the below arguments
@@ -48,7 +52,8 @@ PACKAGE_DIR_NAME=factorio
 #
 
 # absolute path to the factorio-updater script
-UPDATE_SCRIPT=/path/to/update_factorio.py
+#UPDATE_SCRIPT=/path/to/update_factorio.py
+
 # Note that if you set HEADLESS=1 the username/token will not be used as the headless
 # download is provided free of charge
 HEADLESS=1
@@ -57,6 +62,9 @@ UPDATE_TOKEN=yourtoken
 UPDATE_EXPERIMENTAL=0
 UPDATE_TMPDIR=/tmp
 
+# RCON: uncomment this to enable RCON
+#RCON="--rcon-port=12345 --rcon-password=password"
+
 # Extras
 # Additional binary arguments, these will be sent to the binary when issuing the "start" command
-EXTRA_BINARGS="--allow-commands admins-only"
+EXTRA_BINARGS="--start-server-load-latest"

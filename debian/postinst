@@ -4,12 +4,36 @@
 set -e
 
 PKG=factorio-init
+SERVER_VERSION="0.14.12"
+SERVER_DL_URL="https://www.factorio.com/get-download/$SERVER_VERSION/headless/linux64"
 
 if [ "$1" = configure ] ; then
-    # Enable all relevant services on boot
+    # Set up the folders we need.
+    if [ ! -f /var/log/factorio.log ]; then
+        touch /var/log/factorio.log
+        chown factorio:factorio /var/log/factorio.log
+    fi
+    if [ ! -d /var/factorio ]; then
+        mkdir -p /var/factorio
+        chown factorio:factorio /var/factorio
+    fi
+
+    if grep -q "$SERVER_VERSION" /opt/factorio/factorio/data/changelog.txt; then
+        echo " => The latest factorio server is already installed: v$SERVER_VERSION"
+    else
+        # First: if server is running we need to stop it.
+        echo " => A update has been found and will be downloaded now."
+        invoke-rc.d factorio stop || true
+
+        echo " => Downloading and updating factorio server..."
+        curl --progress-bar -L "$SERVER_DL_URL" | tar zx -C /opt/factorio/
+    fi
+
+    # Enable all relevant services on boot and start server if not running already.
     update-rc.d factorio defaults
-    update-rc.d factorio start
+    invoke-rc.d factorio start || true
 else
+    echo " => Restarting factorio server..."
 	invoke-rc.d factorio restart || true
 fi
 

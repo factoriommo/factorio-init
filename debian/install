@@ -1,2 +1,5 @@
-factorio.service.example etc/systemd/system/factorio.service
-factorio usr/bin
+factorio /opt/factorio/factorio-init/factorio
+bash_autocomplete /opt/factorio/factorio-init/bash_autocomplete
+config /etc/factorio/factorio-init-config
+config.ini /etc/factorio/config.ini
+server-settings.json /etc/factorio/server-settings.json

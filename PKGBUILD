@@ -1,5 +1,9 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 
+# This is a WIP and doesnt work.
+
+exit 0
+
 pkgname=factorio-init
 pkgver=1.0.0
 pkgrel=1

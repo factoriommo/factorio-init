@@ -12,6 +12,8 @@ deb file will be in dir up (./..)
 Build for Arch
 --------------
 
+Doesnt work yet.
+
 ```
 run makepkg
 ```

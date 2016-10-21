@@ -1,3 +1,9 @@
+factorio-init (0.14.14~1) unstable; urgency=medium
+
+  * Update to 0.14.14
+
+ -- Maikel Wever <maikelwever@gmail.com>  Fri, 21 Oct 2016 13:14:10 +0200
+
 factorio-init (0.14.11~1) unstable; urgency=medium
 
   * Initial commit - factorio headless 0.14.12
